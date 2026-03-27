@@ -25,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        <meta name="facebook-domain-verification" content="80s810k61f4dnmw108q60wgleqqrhf" />
         <link rel="preconnect" href="https://ggcheckout.com.br" />
         <link rel="dns-prefetch" href="https://ggcheckout.com.br" />
         <Script id="utmify-pixel-init" strategy="lazyOnload">

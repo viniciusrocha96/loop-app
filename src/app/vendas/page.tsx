@@ -6,11 +6,23 @@ import Image from 'next/image';
 import { ArrowDown, Check, X, Target, Link as LinkIcon, CheckCircle2, ShieldCheck, PlayCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { FAQSection } from '@/components/sales-page/FAQSection';
 
+const testimonialsData = [
+  { text: "O LOOP foi a primeira coisa simples que realmente me fez sentir progresso no dia a dia.", letter: "R", name: "Rafael M." },
+  { text: "Depois que comecei a usar o método, parece que alguém organizou minha mente.", letter: "J", name: "Juliana C." },
+  { text: "Hoje eu termino o dia sabendo exatamente o que concluí.", letter: "A", name: "André S." },
+  { text: "É simples, prático e funciona na vida real.", letter: "F", name: "Fernanda L." }
+];
+
 export default function VendasPage() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalSlides = 7;
+
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const [testimonialsHovered, setTestimonialsHovered] = useState(false);
+  const [testimonialsIndex, setTestimonialsIndex] = useState(0);
+  const totalTestimonials = 4;
 
   useEffect(() => {
     if (isHovered) return;
@@ -25,6 +37,19 @@ export default function VendasPage() {
     return () => clearInterval(interval);
   }, [currentIndex, isHovered]);
 
+  useEffect(() => {
+    if (testimonialsHovered) return;
+    const interval = setInterval(() => {
+      if (testimonialsRef.current) {
+        const slideWidth = testimonialsRef.current.clientWidth;
+        const nextIndex = (testimonialsIndex + 1) % totalTestimonials;
+        testimonialsRef.current.scrollTo({ left: slideWidth * nextIndex, behavior: 'smooth' });
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [testimonialsIndex, testimonialsHovered]);
+
   const handleScroll = () => {
     if (carouselRef.current) {
       const scrollLeft = carouselRef.current.scrollLeft;
@@ -36,6 +61,17 @@ export default function VendasPage() {
     }
   };
 
+  const handleTestimonialScroll = () => {
+    if (testimonialsRef.current) {
+      const scrollLeft = testimonialsRef.current.scrollLeft;
+      const slideWidth = testimonialsRef.current.clientWidth;
+      const newIndex = Math.round(scrollLeft / slideWidth);
+      if (newIndex !== testimonialsIndex && newIndex < totalTestimonials) {
+        setTestimonialsIndex(newIndex);
+      }
+    }
+  };
+
   const goToSlide = (index: number) => {
     if (carouselRef.current) {
       const slideWidth = carouselRef.current.clientWidth;
@@ -43,8 +79,18 @@ export default function VendasPage() {
     }
   };
 
+  const goToTestimonialSlide = (index: number) => {
+    if (testimonialsRef.current) {
+      const slideWidth = testimonialsRef.current.clientWidth;
+      testimonialsRef.current.scrollTo({ left: slideWidth * index, behavior: 'smooth' });
+    }
+  };
+
   const scrollRight = () => goToSlide((currentIndex + 1) % totalSlides);
   const scrollLeft = () => goToSlide((currentIndex - 1 + totalSlides) % totalSlides);
+
+  const scrollTestimonialRight = () => goToTestimonialSlide((testimonialsIndex + 1) % totalTestimonials);
+  const scrollTestimonialLeft = () => goToTestimonialSlide((testimonialsIndex - 1 + totalTestimonials) % totalTestimonials);
 
   const handleCheckout = () => {
     window.location.href = 'https://ggcheckout.com.br/checkout/v3/DxJbpZMc4hJDilcoHuQw';
@@ -456,49 +502,62 @@ export default function VendasPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">O que dizem nossos usuários 💬</h2>
           </motion.div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-[#f0f0f0] text-[#111111] p-10 rounded-3xl shadow-lg relative">
-              <span className="absolute -top-4 -left-2 text-[80px] text-[#3E86F5] font-serif leading-none opacity-40">"</span>
-              <p className="text-xl font-medium leading-relaxed mb-8 relative z-10 italic text-gray-800">
-                O LOOP foi a primeira coisa simples que realmente me fez sentir progresso no dia a dia.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center font-bold text-lg text-gray-600">R</div>
-                <div className="font-bold text-lg">Rafael M.</div>
-              </div>
+          <div 
+            className="relative mt-12 max-w-5xl mx-auto group"
+            onMouseEnter={() => setTestimonialsHovered(true)}
+            onMouseLeave={() => setTestimonialsHovered(false)}
+            onTouchStart={() => setTestimonialsHovered(true)}
+            onTouchEnd={() => setTestimonialsHovered(false)}
+          >
+            <button 
+              onClick={scrollTestimonialLeft}
+              className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-[#111111]/90 hover:bg-[#2563eb] text-white p-3 md:p-5 rounded-full opacity-90 transition-all border border-white/20 shadow-2xl flex items-center justify-center transform hover:scale-105"
+            >
+              <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+            </button>
+            
+            <div 
+              ref={testimonialsRef}
+              onScroll={handleTestimonialScroll}
+              className="flex overflow-x-auto snap-x snap-mandatory pb-16 pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] scroll-smooth w-full"
+            >
+              {testimonialsData.map((t, idx) => (
+                <div key={idx} className="w-full shrink-0 snap-center flex items-center justify-center px-4 md:px-24">
+                  <div className="bg-[#f0f0f0] text-[#111111] p-10 md:p-14 rounded-3xl shadow-lg relative w-full border border-white/10 max-w-3xl mx-auto">
+                    <span className="absolute -top-4 -left-2 text-[80px] md:text-[100px] text-[#3E86F5] font-serif leading-none opacity-40">"</span>
+                    <p className="text-xl md:text-3xl font-medium leading-relaxed mb-10 relative z-10 italic text-gray-800 text-center">
+                      {t.text}
+                    </p>
+                    <div className="flex items-center justify-center gap-4">
+                      <div className="w-14 h-14 bg-gray-300 rounded-full flex items-center justify-center font-bold text-xl text-gray-600">{t.letter}</div>
+                      <div className="font-bold text-xl">{t.name}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="bg-[#f0f0f0] text-[#111111] p-10 rounded-3xl shadow-lg relative">
-              <span className="absolute -top-4 -left-2 text-[80px] text-[#3E86F5] font-serif leading-none opacity-40">"</span>
-              <p className="text-xl font-medium leading-relaxed mb-8 relative z-10 italic text-gray-800">
-                Depois que comecei a usar o método, parece que alguém organizou minha mente.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center font-bold text-lg text-gray-600">J</div>
-                <div className="font-bold text-lg">Juliana C.</div>
-              </div>
-            </div>
+            <button 
+              onClick={scrollTestimonialRight}
+              className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-[#111111]/90 hover:bg-[#2563eb] text-white p-3 md:p-5 rounded-full opacity-90 transition-all border border-white/20 shadow-2xl flex items-center justify-center transform hover:scale-105"
+            >
+              <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
+            </button>
 
-            <div className="bg-[#f0f0f0] text-[#111111] p-10 rounded-3xl shadow-lg relative">
-              <span className="absolute -top-4 -left-2 text-[80px] text-[#3E86F5] font-serif leading-none opacity-40">"</span>
-              <p className="text-xl font-medium leading-relaxed mb-8 relative z-10 italic text-gray-800">
-                Hoje eu termino o dia sabendo exatamente o que concluí.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center font-bold text-lg text-gray-600">A</div>
-                <div className="font-bold text-lg">André S.</div>
-              </div>
-            </div>
-
-            <div className="bg-[#f0f0f0] text-[#111111] p-10 rounded-3xl shadow-lg relative">
-              <span className="absolute -top-4 -left-2 text-[80px] text-[#3E86F5] font-serif leading-none opacity-40">"</span>
-              <p className="text-xl font-medium leading-relaxed mb-8 relative z-10 italic text-gray-800">
-                É simples, prático e funciona na vida real.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center font-bold text-lg text-gray-600">F</div>
-                <div className="font-bold text-lg">Fernanda L.</div>
-              </div>
+            {/* Bullets Navigation */}
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-3 z-20">
+              {Array.from({ length: totalTestimonials }).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToTestimonialSlide(idx)}
+                  className={`transition-all duration-300 rounded-full ${
+                    testimonialsIndex === idx 
+                      ? 'w-8 h-2 md:h-3 bg-[#3E86F5]' 
+                      : 'w-2 h-2 md:w-3 md:h-3 bg-white/20 hover:bg-white/50'
+                  }`}
+                  aria-label={`Ir para o depoimento ${idx + 1}`}
+                />
+              ))}
             </div>
           </div>
 
