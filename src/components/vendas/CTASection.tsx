@@ -25,7 +25,7 @@ export function CTASection() {
           </p>
           
           <div className="flex flex-col items-center gap-6 relative z-10">
-            <a href="https://ggcheckout.com.br/checkout/v3/DxJbpZMc4hJDilcoHuQw" className="w-full max-w-md block">
+            <a href="https://payt.site/8oClZz2" className="w-full max-w-md block">
               <Button size="lg" className="w-full h-16 text-lg font-bold shadow-xl shadow-[#2563eb]/20 hover:bg-[#1d4ed8] bg-[#2563eb] text-white hover:scale-105 border-none">
                 Quero fechar meus ciclos agora 👇
               </Button>

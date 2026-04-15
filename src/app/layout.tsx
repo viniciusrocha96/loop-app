@@ -27,8 +27,8 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <meta name="facebook-domain-verification" content="80s810k61f4dnmw108q60wgleqqrhf" />
-        <link rel="preconnect" href="https://ggcheckout.com.br" />
-        <link rel="dns-prefetch" href="https://ggcheckout.com.br" />
+        <link rel="preconnect" href="https://payt.site" />
+        <link rel="dns-prefetch" href="https://payt.site" />
         <Script id="utmify-pixel-init" strategy="lazyOnload">
           {`window.pixelId = "69bd5c3fbf8bf7367e588327";`}
         </Script>

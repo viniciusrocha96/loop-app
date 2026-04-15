@@ -93,7 +93,7 @@ export default function VendasPage() {
   const scrollTestimonialLeft = () => goToTestimonialSlide((testimonialsIndex - 1 + totalTestimonials) % totalTestimonials);
 
   const handleCheckout = () => {
-    window.location.href = 'https://ggcheckout.com.br/checkout/v3/DxJbpZMc4hJDilcoHuQw';
+    window.location.href = 'https://payt.site/8oClZz2';
   };
 
   return (
@@ -591,7 +591,7 @@ export default function VendasPage() {
               <CheckCircle2 className="w-5 h-5 text-green-500" /> Pagamento único. Sem mensalidade.
             </div>
 
-            <a href="https://ggcheckout.com.br/checkout/v3/DxJbpZMc4hJDilcoHuQw" className="block w-full">
+            <a href="https://payt.site/8oClZz2" className="block w-full">
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -633,7 +633,7 @@ export default function VendasPage() {
               Imagine continuar vivendo exatamente como hoje… daqui a 6 meses. Agora imagine 6 meses fechando pequenos ciclos todos os dias. A diferença começa com uma decisão simples.
             </p>
             
-            <a href="https://ggcheckout.com.br/checkout/v3/DxJbpZMc4hJDilcoHuQw" className="block w-full md:w-auto mx-auto mb-16">
+            <a href="https://payt.site/8oClZz2" className="block w-full md:w-auto mx-auto mb-16">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

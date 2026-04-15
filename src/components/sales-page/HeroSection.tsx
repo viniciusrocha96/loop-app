@@ -21,7 +21,7 @@ export function HeroSection() {
           Você não tem um problema de disciplina. Você tem um problema de <span className="font-semibold text-white">ciclos abertos</span>.
         </p>
 
-        <a href="https://ggcheckout.com.br/checkout/v3/DxJbpZMc4hJDilcoHuQw" className="block w-fit mx-auto w-full md:w-auto">
+        <a href="https://payt.site/8oClZz2" className="block w-fit mx-auto w-full md:w-auto">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
