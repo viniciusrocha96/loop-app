@@ -37,6 +37,47 @@ export default function VendasPage() {
     return () => clearInterval(interval);
   }, [currentIndex, isHovered]);
 
+  // Back Redirect Script (Exit Intent Browser Flow)
+  useEffect(() => {
+    let initialized = false;
+    
+    // O Chrome e Safari bloqueiam history.pushState automatizados. 
+    // Exige-se uma interação do usuário (click, touch) para habilitar o "Trapper"
+    const initBackRedirect = () => {
+      if (!initialized && typeof window !== "undefined") {
+        window.history.pushState({ backRedirect: true }, "", window.location.href);
+        window.history.pushState({ backRedirect: true }, "", window.location.href);
+        initialized = true;
+      }
+    };
+
+    document.addEventListener("click", initBackRedirect);
+    document.addEventListener("touchstart", initBackRedirect);
+
+    const handlePopState = () => {
+      if (initialized) {
+        window.location.replace('/desconto');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    
+    // Tratamento para bfcache (se o usuário voltar pelo cache do Safari)
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted && !initialized) {
+        initBackRedirect();
+      }
+    };
+    window.addEventListener('pageshow', handlePageShow);
+
+    return () => {
+      document.removeEventListener("click", initBackRedirect);
+      document.removeEventListener("touchstart", initBackRedirect);
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('pageshow', handlePageShow);
+    };
+  }, []);
+
   useEffect(() => {
     if (testimonialsHovered) return;
     const interval = setInterval(() => {
@@ -591,15 +632,15 @@ export default function VendasPage() {
               <CheckCircle2 className="w-5 h-5 text-green-500" /> Pagamento único. Sem mensalidade.
             </div>
 
-            <a href="https://payt.site/8oClZz2" className="block w-full">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full bg-[#2563eb] text-white font-bold text-xl py-5 rounded-xl shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:bg-[#1d4ed8] transition-colors flex justify-center items-center"
-              >
-                Garantir Meu Acesso Agora
-              </motion.button>
-            </a>
+            <motion.a 
+              href="https://payt.site/8oClZz2"
+              onPointerDown={(e) => { if(e.button === 0) window.location.href = "https://payt.site/8oClZz2"; }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="block w-full bg-[#2563eb] text-white font-bold text-xl py-5 rounded-xl shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:bg-[#1d4ed8] transition-colors flex justify-center items-center cursor-pointer"
+            >
+              Garantir Meu Acesso Agora
+            </motion.a>
           </motion.div>
 
           <motion.div
@@ -633,15 +674,15 @@ export default function VendasPage() {
               Imagine continuar vivendo exatamente como hoje… daqui a 6 meses. Agora imagine 6 meses fechando pequenos ciclos todos os dias. A diferença começa com uma decisão simples.
             </p>
             
-            <a href="https://payt.site/8oClZz2" className="block w-full md:w-auto mx-auto mb-16">
-              <motion.button
+            <motion.a
+                href="https://payt.site/8oClZz2"
+                onPointerDown={(e) => { if(e.button === 0) window.location.href = "https://payt.site/8oClZz2"; }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full md:w-auto bg-[#2563eb] text-white font-bold text-xl md:text-2xl py-6 px-12 rounded-2xl shadow-[0_10px_40px_rgba(37,99,235,0.3)] hover:bg-[#1d4ed8] transition-all flex items-center justify-center"
+                className="block w-full md:w-auto mx-auto mb-16 bg-[#2563eb] text-white font-bold text-xl md:text-2xl py-6 px-12 rounded-2xl shadow-[0_10px_40px_rgba(37,99,235,0.3)] hover:bg-[#1d4ed8] transition-all flex items-center justify-center cursor-pointer"
               >
                 Quero fechar meus ciclos agora 👇
-              </motion.button>
-            </a>
+              </motion.a>
 
             <div className="text-left text-lg md:text-xl text-[#aaaaaa] max-w-2xl mx-auto bg-[#141414] p-8 md:p-10 rounded-3xl border border-white/5">
               <p className="mb-6"><strong className="text-white">Última pergunta:</strong> Quantas vezes você já prometeu para si mesmo que agora vai se organizar de verdade?</p>

@@ -26,13 +26,14 @@ export function PricingSection() {
             <span className="text-7xl font-black text-[#3E86F5] leading-none">R$47</span>
           </div>
           
-          <motion.button 
+          <motion.a 
+            href="https://payt.site/8oClZz2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full bg-[#3E86F5] text-white font-bold text-xl py-5 rounded-xl shadow-[0_10px_30px_rgba(62,134,245,0.4)] hover:bg-blue-600 transition-colors flex justify-center items-center"
+            className="w-full bg-[#3E86F5] text-white font-bold text-xl py-5 rounded-xl shadow-[0_10px_30px_rgba(62,134,245,0.4)] hover:bg-blue-600 transition-colors flex justify-center items-center cursor-pointer"
           >
             Garantir Meu Acesso Agora <ArrowRight className="ml-2 w-6 h-6" />
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         <motion.div

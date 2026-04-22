@@ -25,11 +25,15 @@ export function CTASection() {
           </p>
           
           <div className="flex flex-col items-center gap-6 relative z-10">
-            <a href="https://payt.site/8oClZz2" className="w-full max-w-md block">
-              <Button size="lg" className="w-full h-16 text-lg font-bold shadow-xl shadow-[#2563eb]/20 hover:bg-[#1d4ed8] bg-[#2563eb] text-white hover:scale-105 border-none">
-                Quero fechar meus ciclos agora 👇
-              </Button>
-            </a>
+            <motion.a 
+              href="https://payt.site/8oClZz2"
+              onPointerDown={(e) => { if (e.button === 0) window.location.href = "https://payt.site/8oClZz2"; }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full max-w-md block flex items-center justify-center h-16 text-lg font-bold shadow-xl shadow-[#2563eb]/20 hover:bg-[#1d4ed8] bg-[#2563eb] text-white rounded-md border-none cursor-pointer"
+            >
+              Quero fechar meus ciclos agora 👇
+            </motion.a>
             
             <div className="flex flex-col sm:flex-row items-center gap-6 text-sm text-text-secondary mt-4">
               <div className="flex items-center gap-2">

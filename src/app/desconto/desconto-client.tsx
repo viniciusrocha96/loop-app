@@ -8,10 +8,27 @@ import { Logo } from "../../components/ui/Logo";
 export default function DescontoClient() {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("LOOP40");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async () => {
+    const code = "LOOP40";
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(code);
+      } else {
+        // Fallback for older browsers or testing over Wi-Fi IPs (HTTP)
+        const textArea = document.createElement("textarea");
+        textArea.value = code;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Falha ao copiar cupom", err);
+    }
   };
 
   const bullets = [
@@ -97,9 +114,9 @@ export default function DescontoClient() {
             </p>
 
             <motion.a 
-              href="https://payt.site/8oClZz2"
+              href="https://payt.site/8oClZz2?cupom=LOOP40"
               onPointerDown={(e) => {
-                if (e.button === 0) window.location.href = "https://payt.site/8oClZz2";
+                if (e.button === 0) window.location.href = "https://payt.site/8oClZz2?cupom=LOOP40";
               }}
               animate={{ 
                 scale: [1, 1.03, 1],
