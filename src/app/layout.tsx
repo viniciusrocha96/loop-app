@@ -29,17 +29,12 @@ export default function RootLayout({
         <meta name="facebook-domain-verification" content="80s810k61f4dnmw108q60wgleqqrhf" />
         <link rel="preconnect" href="https://payt.site" />
         <link rel="dns-prefetch" href="https://payt.site" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.pixelId = "69ec44825b6d5779d85c057c";
-              var a = document.createElement("script");
-              a.setAttribute("async", "");
-              a.setAttribute("defer", "");
-              a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-              document.head.appendChild(a);
-            `,
-          }}
+        <Script id="utmify-pixel-init" strategy="lazyOnload">
+          {`window.pixelId = "69ec4e8c5b6d5779d8745468";`}
+        </Script>
+        <Script
+          src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
+          strategy="lazyOnload"
         />
       </head>
       <body
