@@ -30,7 +30,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://payt.site" />
         <link rel="dns-prefetch" href="https://payt.site" />
         <Script id="utmify-pixel-init" strategy="lazyOnload">
-          {`window.pixelId = "69bd5c3fbf8bf7367e588327";`}
+          {`window.pixelId = "69ec3b24e011cb432541213c";`}
         </Script>
         <Script
           src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
