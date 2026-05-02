@@ -3,7 +3,7 @@ export const quizSteps = [
   { 
     type: 'intro', 
     title: 'Por que algumas pessoas conseguem organizar a vida em poucas semanas… enquanto outras vivem recomeçando toda segunda-feira?', 
-    subtitle: 'Em menos de 2 minutos descubra se você está preso no ciclo invisível da inconsistência — e como sair dele usando o LOOP: Seu Guia de Metas Diárias.', 
+    subtitle: 'Em menos de 2 minutos descubra se você está preso no ciclo invisível da inconsistência, e como sair dele usando o LOOP: Seu Guia de Metas Diárias.', 
     buttonText: 'Fazer o diagnóstico agora' 
   },
   // ETAPA 1: SITUAÇÃO

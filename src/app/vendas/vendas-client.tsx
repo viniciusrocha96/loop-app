@@ -149,7 +149,7 @@ export default function VendasPage() {
           className="max-w-4xl mx-auto text-center z-10"
         >
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 leading-[1.1] tracking-tight text-white">
-            Se você sente que está sempre <span className="text-[#3E86F5]">ocupado</span>… mas sua vida parece <span className="text-[#3E86F5]">não sair do lugar</span>, leia isso com atenção.
+            Se você sente que está sempre <span className="text-[#3E86F5]">ocupado</span>, mas sua vida parece <span className="text-[#3E86F5]">não sair do lugar</span>, leia isso com atenção.
           </h1>
           
           <p className="text-xl md:text-3xl text-[#cccccc] font-medium leading-relaxed max-w-3xl mx-auto">
@@ -383,7 +383,7 @@ export default function VendasPage() {
               <p>
                 E não é só sobre tarefas…<br/>
                 O LOOP também te ajuda a <strong className="text-white">evoluir de verdade.</strong><br/>
-                Você define suas metas — mensais e anuais —<br/>
+                Você define suas metas, mensais e anuais,<br/>
                 e o sistema transforma isso em ações claras no seu dia a dia.
               </p>
 
