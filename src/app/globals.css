@@ -7,6 +7,15 @@
   --color-text-primary: #f0f0f0;
   --color-text-secondary: #aaaaaa;
   --font-inter: var(--font-inter);
+  
+  /* Cores Vendas V2 */
+  --color-primary-bg: #0A0A0A;
+  --color-secondary-bg: #1A1A1A;
+  --color-accent-blue: #00BFFF;
+  --color-accent-gold: #D4AF37;
+  --color-text-light: #E0E0E0;
+  --color-text-muted: #A0A0A0;
+  --font-space-grotesk: var(--font-space-grotesk);
 }
 
 body {
