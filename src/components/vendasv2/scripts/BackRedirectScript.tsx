@@ -18,6 +18,7 @@ export function BackRedirectScript() {
 
     document.addEventListener("click", initBackRedirect);
     document.addEventListener("touchstart", initBackRedirect);
+    document.addEventListener("pointerdown", initBackRedirect);
 
     const handlePopState = () => {
       if (initialized) {
@@ -38,6 +39,7 @@ export function BackRedirectScript() {
     return () => {
       document.removeEventListener("click", initBackRedirect);
       document.removeEventListener("touchstart", initBackRedirect);
+      document.removeEventListener("pointerdown", initBackRedirect);
       window.removeEventListener('popstate', handlePopState);
       window.removeEventListener('pageshow', handlePageShow);
     };
