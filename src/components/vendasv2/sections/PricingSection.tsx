@@ -15,7 +15,7 @@ export function PricingSection() {
   ];
 
   return (
-    <section className="w-full py-24 bg-[var(--color-primary-bg)] relative overflow-hidden">
+    <section id="oferta" className="w-full py-24 bg-[var(--color-primary-bg)] relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--color-accent-blue)]/10 blur-[150px] pointer-events-none" />
       

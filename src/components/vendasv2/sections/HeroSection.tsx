@@ -31,7 +31,7 @@ export function HeroSection() {
           </p>
           
           <div className="flex flex-col items-center gap-4">
-            <CtaButton text="COMEÇAR MINHA EVOLUÇÃO" />
+            <CtaButton text="COMEÇAR MINHA EVOLUÇÃO" href="#oferta" />
             <p className="text-sm text-[var(--color-text-muted)]/70">
               Garantia de 7 dias • Acesso Imediato • Pagamento Único
             </p>

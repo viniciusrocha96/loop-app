@@ -2,14 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import { CtaButton } from "./CtaButton";
 
 interface FeatureBlockProps {
   title: string;
   description: string;
   features: string[];
   mockupSrc: string;
-  ctaText?: string;
   reversed?: boolean;
 }
 
@@ -18,7 +16,6 @@ export function FeatureBlock({
   description, 
   features, 
   mockupSrc, 
-  ctaText = "COMEÇAR MINHA EVOLUÇÃO",
   reversed = false 
 }: FeatureBlockProps) {
   return (
@@ -54,9 +51,6 @@ export function FeatureBlock({
               ))}
             </ul>
 
-            <div className="pt-4">
-              <CtaButton text={ctaText} />
-            </div>
           </motion.div>
 
           {/* Mockup */}

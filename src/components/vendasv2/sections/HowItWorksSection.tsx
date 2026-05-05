@@ -90,7 +90,7 @@ export function HowItWorksSection() {
         </div>
 
         <div className="mt-20 flex justify-center">
-          <CtaButton text="COMEÇAR MINHA EVOLUÇÃO" />
+          <CtaButton text="COMEÇAR MINHA EVOLUÇÃO" href="#oferta" />
         </div>
       </div>
     </section>

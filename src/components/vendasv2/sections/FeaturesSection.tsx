@@ -13,7 +13,6 @@ export function FeaturesSection() {
         "Fim do sentimento de 'falsa produtividade'"
       ],
       mockupSrc: "/feature-ciclos.png",
-      ctaText: "ENCERRAR MINHAS PENDÊNCIAS →",
       reversed: false,
     },
     {
@@ -25,7 +24,6 @@ export function FeaturesSection() {
         "Redução drástica da procrastinação"
       ],
       mockupSrc: "/feature-clareza.png",
-      ctaText: "VER MEU CAMINHO CLARO →",
       reversed: true,
     },
     {
@@ -37,7 +35,6 @@ export function FeaturesSection() {
         "Fim da ansiedade financeira com previsibilidade total."
       ],
       mockupSrc: "/feature-financeiro.png",
-      ctaText: "DOMINAR MINHAS FINANÇAS →",
       reversed: false,
     },
     {
@@ -49,7 +46,6 @@ export function FeaturesSection() {
         "Interação humana e intuitiva: você pede, o LOOP executa."
       ],
       mockupSrc: "/feature-ia.png",
-      ctaText: "CONVERSAR COM MINHA IA →",
       reversed: true,
     },
     {
@@ -61,7 +57,6 @@ export function FeaturesSection() {
         "Segurança ponta-a-ponta dos seus dados"
       ],
       mockupSrc: "/feature-multiplataforma.png",
-      ctaText: "BAIXAR O LOOP EM TUDO →",
       reversed: false,
     },
   ];
@@ -75,7 +70,6 @@ export function FeaturesSection() {
           description={feature.description}
           features={feature.items}
           mockupSrc={feature.mockupSrc}
-          ctaText={feature.ctaText}
           reversed={feature.reversed}
         />
       ))}
