@@ -63,6 +63,7 @@ export function HeroSection() {
                 loop 
                 muted 
                 playsInline
+                preload="metadata"
                 className="w-full h-auto opacity-90 transition-transform duration-700 hover:scale-[1.02]"
               >
                 Seu navegador não suporta a reprodução de vídeo.
