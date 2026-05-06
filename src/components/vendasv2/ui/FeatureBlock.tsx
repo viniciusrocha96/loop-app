@@ -2,6 +2,7 @@
 
 import { m } from "framer-motion";
 import { Check } from "lucide-react";
+import Image from "next/image";
 
 interface FeatureBlockProps {
   title: string;
@@ -71,12 +72,12 @@ export function FeatureBlock({
               </div>
               <div className="aspect-[4/3] w-full bg-neutral-900 relative flex items-center justify-center">
                 {/* Imagem/GIF do mockup aqui */}
-                <img 
+                <Image 
                   src={mockupSrc} 
                   alt={title} 
-                  loading="lazy"
-                  decoding="async"
-                  className="object-cover w-full h-full opacity-90 transition-transform duration-700 hover:scale-105"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover opacity-90 transition-transform duration-700 hover:scale-105"
                 />
               </div>
             </div>

@@ -2,8 +2,25 @@
 
 import { m } from "framer-motion";
 import { CtaButton } from "../ui/CtaButton";
+import { useState, useRef, useEffect } from "react";
 
 export function HeroSection() {
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const videoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVideoVisible(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: "600px" });
+    
+    observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, []);
   return (
     <section className="relative w-full pt-32 pb-20 overflow-hidden flex flex-col items-center justify-center min-h-[90vh]">
       {/* Premium Background Glow */}
@@ -54,20 +71,21 @@ export function HeroSection() {
               <div className="w-3 h-3 rounded-full bg-green-500/80" />
             </div>
              {/* Mockup content */}
-            <div className="w-full bg-neutral-950 flex items-center justify-center relative">
+            <div ref={videoRef} className="w-full bg-neutral-950 flex items-center justify-center relative min-h-[300px] md:min-h-[500px]">
               <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent-blue)]/5 to-transparent pointer-events-none z-10" />
               {/* Video Player */}
-              <video 
-                src="/demo.mp4" 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                preload="metadata"
-                className="w-full h-auto opacity-90 transition-transform duration-700 hover:scale-[1.02]"
-              >
-                Seu navegador não suporta a reprodução de vídeo.
-              </video>
+              {isVideoVisible && (
+                <video 
+                  src="/demo.mp4" 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-auto opacity-90 transition-transform duration-700 hover:scale-[1.02]"
+                >
+                  Seu navegador não suporta a reprodução de vídeo.
+                </video>
+              )}
             </div>
           </div>
         </m.div>
