@@ -11,11 +11,30 @@ interface CtaButtonProps {
 }
 
 export function CtaButton({ text, href = "https://payt.site/8oClZz2", className = "", icon = true }: CtaButtonProps) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement> | React.TouchEvent<HTMLAnchorElement>) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Usamos e.currentTarget.href para garantir que pegamos os parâmetros UTM
+      // que o Utmify possa ter injetado no link via DOM.
+      const targetUrl = e.currentTarget.href;
+      
+      if (e.type === "click" || e.type === "touchstart") {
+        // Ignora falhas de scripts de terceiros (como Utmify em localhost) e força a ida pro checkout
+        window.location.assign(targetUrl);
+      }
+    }
+  };
+
   return (
     <a
       href={href}
-      onTouchStart={() => { window.location.href = href; }}
-      onMouseDown={(e) => { if(e.button === 0) window.location.href = href; }}
+      onClick={handleClick}
+      onTouchStart={handleClick}
       className={`relative group overflow-hidden rounded-full bg-[var(--color-accent-blue)] px-10 py-5 font-black text-lg text-black shadow-[0_0_20px_rgba(0,191,255,0.3)] transition-all hover:shadow-[0_0_30px_rgba(0,191,255,0.6)] hover:scale-105 active:scale-95 inline-block text-center flex items-center justify-center ${className}`}
     >
       <span className="relative z-10 flex items-center justify-center gap-2">

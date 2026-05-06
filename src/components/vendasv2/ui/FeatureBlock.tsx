@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Check } from "lucide-react";
 
 interface FeatureBlockProps {
@@ -24,7 +24,7 @@ export function FeatureBlock({
         <div className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16 lg:gap-24`}>
           
           {/* Text Content */}
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, x: reversed ? 30 : -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -51,10 +51,10 @@ export function FeatureBlock({
               ))}
             </ul>
 
-          </motion.div>
+          </m.div>
 
           {/* Mockup */}
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, x: reversed ? -30 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -80,7 +80,7 @@ export function FeatureBlock({
                 />
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
         </div>
       </div>

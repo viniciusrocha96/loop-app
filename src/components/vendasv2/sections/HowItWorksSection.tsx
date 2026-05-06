@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m , useScroll, useTransform } from "framer-motion";
 import { Clock, Briefcase, Target } from "lucide-react";
 import { CtaButton } from "../ui/CtaButton";
 
@@ -53,13 +53,13 @@ export function HowItWorksSection() {
           <div className="absolute left-0 top-2 bottom-0 w-[2px] bg-white/10" />
           
           {/* Animated Glowing Line */}
-          <motion.div 
+          <m.div 
             className="absolute left-0 top-2 w-[2px] bg-[var(--color-accent-blue)] origin-top drop-shadow-[0_0_8px_rgba(0,191,255,0.8)]"
             style={{ height: lineHeight }}
           />
 
           {scenarios.map((scenario, index) => (
-            <motion.div
+            <m.div
               key={index}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -68,7 +68,7 @@ export function HowItWorksSection() {
               className="relative"
             >
               {/* Dot on the timeline */}
-              <motion.div 
+              <m.div 
                 initial={{ backgroundColor: "var(--color-secondary-bg)", borderColor: "rgba(255,255,255,0.1)" }}
                 whileInView={{ backgroundColor: "var(--color-secondary-bg)", borderColor: "var(--color-accent-blue)" }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -85,7 +85,7 @@ export function HowItWorksSection() {
                   {scenario.description}
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
 export function ProblemSolutionSection() {
@@ -10,7 +10,7 @@ export function ProblemSolutionSection() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[var(--color-accent-blue)]/5 blur-[120px] pointer-events-none" />
       
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center gap-8">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -23,9 +23,9 @@ export function ProblemSolutionSection() {
           <h2 className="font-space-grotesk text-4xl md:text-6xl font-black text-[var(--color-text-light)] leading-tight tracking-tight">
             Você ainda tá tentando lembrar tudo de cabeça ou não sabe pra onde vai o seu tempo?
           </h2>
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -33,9 +33,9 @@ export function ProblemSolutionSection() {
           className="text-xl md:text-2xl text-[var(--color-text-muted)] leading-relaxed max-w-3xl"
         >
           O LOOP resolve isso: organização pessoal e gestão de metas, tudo de forma simples e direta, te ajudando a fechar seus ciclos e transformar intenção em progresso real.
-        </motion.p>
+        </m.p>
         
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -43,7 +43,7 @@ export function ProblemSolutionSection() {
           className="mt-8 animate-bounce text-[var(--color-accent-blue)]/50"
         >
           <ArrowDown className="w-8 h-8" strokeWidth={1.5} />
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

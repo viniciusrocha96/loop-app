@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { TestimonialCard } from "../ui/TestimonialCard";
 
 export function SocialProofSection() {
@@ -79,7 +79,7 @@ export function SocialProofSection() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
             {stats.map((stat, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export function SocialProofSection() {
                 <span className="text-[var(--color-text-muted)] text-sm">
                   {stat.description}
                 </span>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

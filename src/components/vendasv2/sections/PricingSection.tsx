@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Check, ShieldCheck } from "lucide-react";
 import { CtaButton } from "../ui/CtaButton";
 
@@ -29,7 +29,7 @@ export function PricingSection() {
           </p>
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -92,7 +92,7 @@ export function PricingSection() {
               </ul>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

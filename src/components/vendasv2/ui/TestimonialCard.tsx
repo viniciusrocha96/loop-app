@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Quote } from "lucide-react";
 
 interface TestimonialCardProps {
@@ -13,7 +13,7 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ name, role, text, imageUrl, delay = 0 }: TestimonialCardProps) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -41,6 +41,6 @@ export function TestimonialCard({ name, role, text, imageUrl, delay = 0 }: Testi
           <p className="text-sm text-[var(--color-text-muted)]">{role}</p>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }

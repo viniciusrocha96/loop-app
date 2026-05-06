@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { CtaButton } from "../ui/CtaButton";
 
 export function HeroSection() {
@@ -11,7 +11,7 @@ export function HeroSection() {
       <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-[var(--color-accent-gold)]/5 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -36,9 +36,9 @@ export function HeroSection() {
               Garantia de 7 dias • Acesso Imediato • Pagamento Único
             </p>
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
@@ -69,7 +69,7 @@ export function HeroSection() {
               </video>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
